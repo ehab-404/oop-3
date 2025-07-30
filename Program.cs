@@ -258,6 +258,31 @@ namespace oop_3
 
 
 
+            #region V07 Built-in Interfaces - ICompareable
+            Employee[] employees2 =
+            [
+                new Employee { Id = 1 , Name = "Ahmed", Age = 30, Salary = 12000 },
+    new Employee { Id = 2 , Name = "Omar", Age= 27, Salary= 11000 },
+    new Employee { Id = 3 , Name = "Ali", Age= 31, Salary= 13000 }
+            ];
+
+            //Array.Sort(employees);
+
+            //int x = employees2[0].CompareTo(employees[1]);
+            //// +ve : Caller greater than parameter
+            //// -ve : Caller less than parameter
+            //// 0   : Caller equal parameter
+
+            //Console.WriteLine(x);
+
+            foreach (Employee e in employees2)
+            {
+                Console.WriteLine(e);
+            }
+            #endregion
+
+
+
 
 
 
