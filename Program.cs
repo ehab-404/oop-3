@@ -283,6 +283,25 @@ namespace oop_3
 
 
 
+            #region V08 Built-in Interfaces - IComparer
+            Employee[] employees3 =
+            [
+                new Employee { Id = 1 , Name = "Ahmed", Age = 30, Salary = 12000 },
+    new Employee { Id = 2 , Name = "Omar", Age= 27, Salary= 11000 },
+    new Employee { Id = 3 , Name = "Ali", Age= 31, Salary= 13000 }
+            ];
+
+            Array.Sort(employees, new EmployeeComparerSalary());
+            Array.Sort(employees, new EmployeeComparerName());
+
+            foreach (Employee e in employees3)
+            {
+                Console.WriteLine(e);
+            }
+            #endregion
+
+
+
 
 
 
