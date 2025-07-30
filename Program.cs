@@ -2,6 +2,7 @@
 
 
 
+using System.Text;
 using oop_3.InterfaceEx01;
 using oop_3.InterfaceEx02;
 using oop_3.InterfaceEx03;
@@ -144,6 +145,86 @@ namespace oop_3
 
 
             #endregion
+
+
+
+
+
+
+
+
+
+            #region V05
+
+            // Shallow Copy Vs Deep Copy
+
+            //int[] Arr01 = { 1, 2, 3 };
+            //int[] Arr02 = { 4, 5, 6 };
+
+            //string[] Arr01 = { "Ahmed", "Ali", "Omar" };
+            //string[] Arr02 = { "Ziad", "Adel", "Amr" };
+
+            StringBuilder[] Arr01 = new StringBuilder[]
+            {
+                new StringBuilder("Ahmed"),
+                new StringBuilder("Ali"),
+                new StringBuilder("Omar")
+            };
+
+            StringBuilder[] Arr02 = new StringBuilder[]
+            {
+                new StringBuilder("Amr"),
+                new StringBuilder("Adel"),
+                new StringBuilder("Ziad")
+            };
+
+
+            Console.WriteLine($"Arr01: {Arr01.GetHashCode()}");
+            Console.WriteLine($"Arr02: {Arr02.GetHashCode()}");
+
+            //Shallow Copy
+
+            Arr02 = (StringBuilder[])Arr01.Clone(); // 
+            // Copy Identity
+            // { 1, 2, 3 } ---> Has Two References Arr01, Arr02
+            // { 4, 5, 6 } ---> UnReachable Object
+
+            Console.WriteLine();
+            Console.WriteLine($"Arr01: {Arr01.GetHashCode()}");
+            Console.WriteLine($"Arr02: {Arr02.GetHashCode()}");
+
+            //// Identity (Address) + Object State [Data]
+
+            Arr02[0].Append(" Ahmed Amin");
+            Console.WriteLine(Arr01[0]);
+
+
+            //// Deep Copy
+            //int[] Arr01 = { 1, 2, 3 };
+            //int[] Arr02 = { 4, 5, 6 };
+
+            //Console.WriteLine($"Arr01: {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02: {Arr02.GetHashCode()}");
+            //Arr02 = (int[])Arr01.Clone();    // Deep Copy
+            //// Clone Method will copy the object State of the caller
+            //// Assign The New Object To Arr02, Will  Generate new Identity
+
+            //Console.WriteLine();
+            //Console.WriteLine($"Arr01: {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02: {Arr02.GetHashCode()}");
+
+            //// Identity (Address) + Object State [Data]
+
+            //Arr02[0] = 100;
+            //Console.WriteLine(Arr01[0]);
+
+
+            #endregion
+
+
+
+
+
 
 
         }
