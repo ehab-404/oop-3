@@ -222,6 +222,43 @@ namespace oop_3
             #endregion
 
 
+            #region v6
+
+
+            Employee e01 = new Employee()
+            {
+                Id = 1,
+                Name = "Ahmed",
+                Age = 30,
+                Salary = 12000
+            };
+
+            Employee e02 = new Employee()
+            {
+                Id = 2,
+                Name = "Amr",
+                Age = 28,
+                Salary = 11000
+            };
+
+            //e02 = e01;      // Shallow Copy
+            //e02 = (Employee) e01.Clone();   // Deep Copy
+            e02 = new Employee(e01);    // Deep copy using copy constructor
+
+            Console.WriteLine(e01.GetHashCode());
+            Console.WriteLine(e02.GetHashCode());
+            Console.WriteLine(e01);
+            Console.WriteLine(e02);
+
+
+
+
+
+            #endregion
+
+
+
+
 
 
 
