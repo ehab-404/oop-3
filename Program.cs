@@ -2,6 +2,7 @@
 
 
 
+using System.Text;
 using oop_3.InterfaceEx01;
 using oop_3.InterfaceEx02;
 using oop_3.InterfaceEx03;
@@ -144,6 +145,167 @@ namespace oop_3
 
 
             #endregion
+
+
+
+
+
+
+
+
+
+            #region V05
+
+            // Shallow Copy Vs Deep Copy
+
+            //int[] Arr01 = { 1, 2, 3 };
+            //int[] Arr02 = { 4, 5, 6 };
+
+            //string[] Arr01 = { "Ahmed", "Ali", "Omar" };
+            //string[] Arr02 = { "Ziad", "Adel", "Amr" };
+
+            StringBuilder[] Arr01 = new StringBuilder[]
+            {
+                new StringBuilder("Ahmed"),
+                new StringBuilder("Ali"),
+                new StringBuilder("Omar")
+            };
+
+            StringBuilder[] Arr02 = new StringBuilder[]
+            {
+                new StringBuilder("Amr"),
+                new StringBuilder("Adel"),
+                new StringBuilder("Ziad")
+            };
+
+
+            Console.WriteLine($"Arr01: {Arr01.GetHashCode()}");
+            Console.WriteLine($"Arr02: {Arr02.GetHashCode()}");
+
+            //Shallow Copy
+
+            Arr02 = (StringBuilder[])Arr01.Clone(); // 
+            // Copy Identity
+            // { 1, 2, 3 } ---> Has Two References Arr01, Arr02
+            // { 4, 5, 6 } ---> UnReachable Object
+
+            Console.WriteLine();
+            Console.WriteLine($"Arr01: {Arr01.GetHashCode()}");
+            Console.WriteLine($"Arr02: {Arr02.GetHashCode()}");
+
+            //// Identity (Address) + Object State [Data]
+
+            Arr02[0].Append(" Ahmed Amin");
+            Console.WriteLine(Arr01[0]);
+
+
+            //// Deep Copy
+            //int[] Arr01 = { 1, 2, 3 };
+            //int[] Arr02 = { 4, 5, 6 };
+
+            //Console.WriteLine($"Arr01: {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02: {Arr02.GetHashCode()}");
+            //Arr02 = (int[])Arr01.Clone();    // Deep Copy
+            //// Clone Method will copy the object State of the caller
+            //// Assign The New Object To Arr02, Will  Generate new Identity
+
+            //Console.WriteLine();
+            //Console.WriteLine($"Arr01: {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02: {Arr02.GetHashCode()}");
+
+            //// Identity (Address) + Object State [Data]
+
+            //Arr02[0] = 100;
+            //Console.WriteLine(Arr01[0]);
+
+
+            #endregion
+
+
+            #region v6
+
+
+            Employee e01 = new Employee()
+            {
+                Id = 1,
+                Name = "Ahmed",
+                Age = 30,
+                Salary = 12000
+            };
+
+            Employee e02 = new Employee()
+            {
+                Id = 2,
+                Name = "Amr",
+                Age = 28,
+                Salary = 11000
+            };
+
+            //e02 = e01;      // Shallow Copy
+            //e02 = (Employee) e01.Clone();   // Deep Copy
+            e02 = new Employee(e01);    // Deep copy using copy constructor
+
+            Console.WriteLine(e01.GetHashCode());
+            Console.WriteLine(e02.GetHashCode());
+            Console.WriteLine(e01);
+            Console.WriteLine(e02);
+
+
+
+
+
+            #endregion
+
+
+
+            #region V07 Built-in Interfaces - ICompareable
+            Employee[] employees2 =
+            [
+                new Employee { Id = 1 , Name = "Ahmed", Age = 30, Salary = 12000 },
+    new Employee { Id = 2 , Name = "Omar", Age= 27, Salary= 11000 },
+    new Employee { Id = 3 , Name = "Ali", Age= 31, Salary= 13000 }
+            ];
+
+            //Array.Sort(employees);
+
+            //int x = employees2[0].CompareTo(employees[1]);
+            //// +ve : Caller greater than parameter
+            //// -ve : Caller less than parameter
+            //// 0   : Caller equal parameter
+
+            //Console.WriteLine(x);
+
+            foreach (Employee e in employees2)
+            {
+                Console.WriteLine(e);
+            }
+            #endregion
+
+
+
+            #region V08 Built-in Interfaces - IComparer
+            Employee[] employees3 =
+            [
+                new Employee { Id = 1 , Name = "Ahmed", Age = 30, Salary = 12000 },
+    new Employee { Id = 2 , Name = "Omar", Age= 27, Salary= 11000 },
+    new Employee { Id = 3 , Name = "Ali", Age= 31, Salary= 13000 }
+            ];
+
+            Array.Sort(employees, new EmployeeComparerSalary());
+            Array.Sort(employees, new EmployeeComparerName());
+
+            foreach (Employee e in employees3)
+            {
+                Console.WriteLine(e);
+            }
+            #endregion
+
+
+
+
+
+
+
 
 
         }
