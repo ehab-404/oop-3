@@ -304,6 +304,92 @@ namespace oop_3
 
 
 
+            #region ass
+
+
+            //part1  mcq  
+
+            // 1. b
+
+            //2. a
+
+
+            //3. b
+
+            //4.  b
+
+            //5.  d    //   :    not   implements
+
+            //6.  b
+
+
+            //7  a
+
+
+            //8   b
+
+
+            // 9 b
+
+            // 10  c        in case implements keyword is correct   ->  we have conflict
+            // 
+
+
+
+
+
+            //part2
+
+
+            //q1 
+
+
+            IShape shape1 = new Circle() { Area = 50 };
+            IShape shape2 = new Rectangle() {Area = 50 };
+
+            Console.WriteLine(shape1.Area);
+            Console.WriteLine(shape2.Area);
+
+
+            shape1.DisplayShapeInfo();
+            shape2.DisplayShapeInfo();
+
+
+
+
+            //q2
+
+
+
+            IAuthenticationService valid = new BasicAuthenticationService();
+
+            Console.WriteLine(valid.AuthenticateUser("ehab" ,123));
+            Console.WriteLine(valid.AuthorizeUser("ehab" ,123,"admin"));
+
+
+            Console.WriteLine(valid.AuthenticateUser("pop", 123));
+            Console.WriteLine(valid.AuthorizeUser("ehab", 123, "employee"));
+
+
+            //q3
+
+
+            INotificationService notification1 = new EmailNotificationService();
+            INotificationService notification2 = new SmsNotificationService();
+            INotificationService notification3 = new PushNotificationService();
+
+
+            notification1.SendNotification("ehab ", "hello ");
+            notification2.SendNotification("ehab ", "hello ");
+            notification3.SendNotification("ehab ", "hello ");
+
+
+
+
+            #endregion
+
+
+
 
 
 
